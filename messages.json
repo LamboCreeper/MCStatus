@@ -1,3 +1,10 @@
 {
-	"": ""
+	"about": {
+		"p1": "Hello, ",
+		"p2": " I am MCStatus. A Discord Bot by LamboCreeper that allows you to check the status of your favourite Minecraft related services."
+	},
+	"server": {
+		"not_defined": " You must define a server IP that you would like to get the status of.",
+		"usage": "**Usage:** `@MCStatus Server <IP Adress>`"
+	}
 }

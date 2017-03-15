@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+const http = require('http');
+const nQuery = require('nodeQuery');
 const msg = require('./messages.json');
 const auth = require('./auth.json');
 
@@ -27,17 +29,24 @@ client.on('message', message => {
 	// Server status command - @MCStatus server
 	if (message.content.startsWith('<@291623138457026560>')) {
 
-		console.log('1');
-
+		// Creating arguments and making them not CaSeSENsiTivItE.
 		var args = message.content.split(" ").slice(1);
-
-		console.log(args);
-
 		arg0 = args[0].toUpperCase();
 
 		if (arg0 == 'SERVER') {
 			if (typeof args[1] != 'undefined') {
+				console.log(args[1]);
+				var result;
+				var app = function ($) {
+					$.on('ready', function () {
+						$.get( "https://mcapi.us/server/status?ip=" + args[1], function( data ) {
+					  	 	result = data;
+						});
+					});
+				}
+				message.channel.sendMessage(result);
 
+				nQuery.use(app);
 			} else {
 				message.channel.sendMessage(msg.server.not_defined);
 				message.channel.sendMessage(msg.server.usage);

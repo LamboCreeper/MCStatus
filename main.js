@@ -51,7 +51,7 @@ client.on('message', message => {
 							var result = body;
 							console.log('-');
 							console.log(result);
-							message.channel.sendMessage(JSON.stringify(result));
+							message.channel.sendMessage(JSON.stringify(result, null, 2));
 					    }
 					});
 

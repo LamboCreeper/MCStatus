@@ -58,7 +58,7 @@ client.on('message', message => {
 
 							serverEmbded.setFooter('MCStatus by LamboCreeper')
 							serverEmbded.setThumbnail('https://mcapi.ca/query/' + args[1] + '/icon')
-							serverEmbded.setURL('http://lambocreeper.uk/mcstatus')
+							serverEmbded.setURL('http://lcurl.xyz/MCStatusBot')
 
 							message.channel.sendEmbed(serverEmbded, '', { disableEveryone: true });
 					    }
@@ -92,7 +92,7 @@ client.on('message', message => {
 
 						.setFooter('MCStatus by LamboCreeper')
 						.setThumbnail('http://vgboxart.com/resources/logo/3993_mojang-prev.png')
-						.setURL('http://lambocreeper.uk/mcstatus')
+						.setURL('http://lcurl.xyz/MCStatusBot')
 
 						message.channel.sendEmbed(officialEmbded, '', { disableEveryone: true });
 					}
@@ -113,8 +113,8 @@ client.on('message', message => {
 		   	}
 
 			aboutEmbded.setFooter('v1.0.0b')
-			aboutEmbded.setThumbnail('https://pbs.twimg.com/profile_images/815197590237151232/t75x3eEB_bigger.jpg')
-			aboutEmbded.setURL('http://lambocreeper.uk/mcstatus')
+			aboutEmbded.setThumbnail('https://hydra-media.cursecdn.com/minecraft.gamepedia.com/1/1e/Observer_PE.png?version=8156987803ff022df44a2a839f2fdc96')
+			aboutEmbded.setURL('http://lcurl.xyz/MCStatusBot')
 
 			message.channel.sendEmbed(aboutEmbded, '', { disableEveryone: true });
 		}

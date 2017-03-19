@@ -13,7 +13,7 @@
 		"server": {
 			"name": "**Server Information**",
 			"command": "`@MCStatus server <ip adress>`",
-			"example": "`@MCStatus server play.collateral.network`",
+			"example": "`@MCStatus server mc.hypixel.net`",
 			"description": "Get information about a specific Minecraft server."
 		},
 		"official": {

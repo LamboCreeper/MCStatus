@@ -64,7 +64,7 @@ client.on('message', message => {
 								var motd = body.motd;
 								var formattingCodes = ['§1', '§2', '§3', '§4', '§5', '§6', '§7', '§8', '§9', '§0', '§a', '§b', '§c', '§d', '§e', '§f', '§r', '§l', '§o', '§n', '§m', '§k']
 								for (code in formattingCodes) {
-									motd = motd.replace(formattingCodes[code], '');
+									motd = motd.replace(new RegExp(formattingCodes[code], "g"), '');
 								}
 								serverEmbded.setTitle(motd)
 								serverEmbded.addField('Online', body.online)

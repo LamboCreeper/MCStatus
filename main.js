@@ -64,21 +64,21 @@ client.on('message', message => {
 			var docs = msg.documentation;
 			var response = '';
 
-			const embed = new Discord.RichEmbed()
+			const aboutEmbded = new Discord.RichEmbed()
 
 			.setTitle('MCStatus')
 			.setColor('#66A866')
 			.setDescription(msg.about.p1 + message.author + msg.about.p2)
 
 			for (cmd in docs) {
-			   embed.addField(docs[cmd].name, "**Usage:** " + docs[cmd].command + "\n**Example:** " + docs[cmd].example + "\n**Description:** " + docs[cmd].description)
+			   aboutEmbded.addField(docs[cmd].name, "**Usage:** " + docs[cmd].command + "\n**Example:** " + docs[cmd].example + "\n**Description:** " + docs[cmd].description)
 		   	}
-			
-			embed.setFooter('v1.0.0b')
-			embed.setThumbnail('https://pbs.twimg.com/profile_images/815197590237151232/t75x3eEB_bigger.jpg')
-			embed.setURL('http://lambocreeper.uk/mcstatus')
 
-			message.channel.sendEmbed(embed, '', { disableEveryone: true });
+			aboutEmbded.setFooter('v1.0.0b')
+			aboutEmbded.setThumbnail('https://pbs.twimg.com/profile_images/815197590237151232/t75x3eEB_bigger.jpg')
+			aboutEmbded.setURL('http://lambocreeper.uk/mcstatus')
+
+			message.channel.sendEmbed(aboutEmbded, '', { disableEveryone: true });
 		}
 	}
 });

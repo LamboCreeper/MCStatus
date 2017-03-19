@@ -25,6 +25,7 @@
 	},
 	"server": {
 		"not_defined": " You must define a server IP that you would like to get the status of.",
-		"usage": "**Usage:** `@MCStatus Server <IP Adress>`"
+		"usage": "**Usage:** `@MCStatus Server <IP Adress>`",
+		"unknown": " The API failed to ping this server. Are you sure the IP is correct?"
 	}
 }

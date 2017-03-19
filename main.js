@@ -47,7 +47,7 @@ client.on('message', message => {
 					    json: true
 					}, function (error, response, body) {
 					    if (!error && response.statusCode === 200) {
-					        console.log(body) // Print the json response
+							console.log(body) // Print the json response
 							var result = body;
 							console.log('-');
 							console.log(result);
@@ -61,7 +61,24 @@ client.on('message', message => {
 				}
 			}
 		} else {
-			message.channel.sendMessage(msg.about.p1 + message.author + msg.about.p2);
+			var docs = msg.documentation;
+			var response = '';
+
+			const embed = new Discord.RichEmbed()
+
+			.setTitle('MCStatus')
+			.setColor('#66A866')
+			.setDescription(msg.about.p1 + message.author + msg.about.p2)
+
+			for (cmd in docs) {
+			   embed.addField(docs[cmd].name, "**Usage:** " + docs[cmd].command + "\n**Example:** " + docs[cmd].example + "\n**Description:** " + docs[cmd].description)
+		   	}
+			
+			embed.setFooter('v1.0.0b')
+			embed.setThumbnail('https://pbs.twimg.com/profile_images/815197590237151232/t75x3eEB_bigger.jpg')
+			embed.setURL('http://lambocreeper.uk/mcstatus')
+
+			message.channel.sendEmbed(embed, '', { disableEveryone: true });
 		}
 	}
 });

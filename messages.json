@@ -3,6 +3,20 @@
 		"p1": "Hello, ",
 		"p2": " I am MCStatus. A Discord Bot by LamboCreeper that allows you to check the status of your favourite Minecraft related services."
 	},
+	"documentation": {
+		"about": {
+			"name": "**About**",
+			"command": "`@MCStatus`",
+			"example": "`@MCStatus`",
+			"description": "Get information about MCStatus."
+		},
+		"server": {
+			"name": "**Server Information**",
+			"command": "`@MCStatus server <ip adress>`",
+			"example": "`@MCStatus server play.collateral.network`",
+			"description": "Get information about a specific Minecraft server."
+		}
+	},
 	"server": {
 		"not_defined": " You must define a server IP that you would like to get the status of.",
 		"usage": "**Usage:** `@MCStatus Server <IP Adress>`"

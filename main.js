@@ -112,8 +112,10 @@ client.on('message', message => {
 			   aboutEmbded.addField(docs[cmd].name, "**Usage:** " + docs[cmd].command + "\n**Example:** " + docs[cmd].example + "\n**Description:** " + docs[cmd].description)
 		   	}
 
-			aboutEmbded.setFooter('v1.0.0b')
+			aboutEmbded.addField('Links', ' [GitHub](http://github.com/LamboCreeper/MCStatus) | [Invite](http://lcurl.xyz/MCStatusBot) | [Website](http://LamboCreeper.uk/)')
+
 			aboutEmbded.setThumbnail('https://hydra-media.cursecdn.com/minecraft.gamepedia.com/1/1e/Observer_PE.png?version=8156987803ff022df44a2a839f2fdc96')
+			aboutEmbded.setFooter('v1.0.0b | Guilds: ' + client.guilds.size + ' | Developer: LamboCreeper')
 			aboutEmbded.setURL('http://lcurl.xyz/MCStatusBot')
 
 			message.channel.sendEmbed(aboutEmbded, '', { disableEveryone: true });

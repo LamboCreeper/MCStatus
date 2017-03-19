@@ -6,13 +6,18 @@ MCStatus is a Discord Bot that allows you to check the status of your favourite 
 
 ## Commands
 
-### Checking Minecraft Official Services
+### About the Bot
 
 ```
-@MCStatus minecraft
+@MCStatus
 ```
 
 ### Checking Minecraft Servers
 ```
 @MCStatus server <ip>
+```
+
+### Checking Official Mojang Services
+```
+@MCStatus official
 ```

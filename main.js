@@ -77,6 +77,8 @@ client.on('message', message => {
 
 								message.channel.sendEmbed(serverEmbded, '', { disableEveryone: true });
 							}
+						} else {
+							message.channel.sendMessage('Could not connect to Mojang\'s API.');
 						}
 					});
 
@@ -85,12 +87,14 @@ client.on('message', message => {
 					message.channel.sendMessage(msg.server.usage);
 				}
 			} else if (arg0 == 'OFFICIAL') {
-				var url = "https://mcapi.ca/mcstatus"
+				var url = "https://mcapi.ca/mcstatus";
 				request({
 					url: url,
 					json: true
 				}, function (error, response, body) {
+					console.log(1);
 					if (!error && response.statusCode === 200) {
+						console.log(2);
 						const officialEmbded = new Discord.RichEmbed()
 
 						.setColor('#66A866')
@@ -111,8 +115,12 @@ client.on('message', message => {
 						.setURL('http://lcurl.xyz/MCStatusBot')
 
 						message.channel.sendEmbed(officialEmbded, '', { disableEveryone: true });
+					} else {
+						message.channel.sendMessage('Could not connect to Mojang\'s API.');
 					}
 				});
+			} else if (arg0 == '-G') {
+				message.channel.sendMessage(client.guilds.size);
 			}
 		} else {
 			var docs = msg.documentation;

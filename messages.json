@@ -15,6 +15,12 @@
 			"command": "`@MCStatus server <ip adress>`",
 			"example": "`@MCStatus server play.collateral.network`",
 			"description": "Get information about a specific Minecraft server."
+		},
+		"official": {
+			"name": "**Official Minecraft Services**",
+			"command": "`@MCStatus offical`",
+			"example": "`@MCStatus offical`",
+			"description": "Get information about official Minecraft services ran by Mojang."
 		}
 	},
 	"server": {

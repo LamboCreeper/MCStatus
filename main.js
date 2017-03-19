@@ -36,10 +36,6 @@ client.on('message', message => {
 
 			if (arg0 == 'SERVER') {
 				if (typeof args[1] != 'undefined') {
-					console.log(args[1]);
-					// $.get( "https://mcapi.us/server/status?ip=" + args[1], function( data ) {
-					//   	 result = data;
-					// });
 
 					var url = "https://mcapi.us/server/status?ip=" + args[1]
 					request({
@@ -47,11 +43,24 @@ client.on('message', message => {
 					    json: true
 					}, function (error, response, body) {
 					    if (!error && response.statusCode === 200) {
-							console.log(body) // Print the json response
-							var result = body;
-							console.log('-');
-							console.log(result);
-							message.channel.sendMessage(JSON.stringify(result, null, 2));
+							const serverEmbded = new Discord.RichEmbed()
+
+							.setColor('#66A866')
+							var motd = body.motd;
+							var formattingCodes = ['§1', '§2', '§3', '§4', '§5', '§6', '§7', '§8', '§9', '§0', '§a', '§b', '§c', '§d', '§e', '§f', '§r', '§l', '§o', '§n', '§m', '§k']
+							for (code in formattingCodes) {
+								motd = motd.replace(formattingCodes[code], '');
+							}
+							serverEmbded.setTitle(motd)
+							serverEmbded.addField('Online', body.online)
+							serverEmbded.addField('Players Online', body.players.now + "/" + body.players.max)
+							serverEmbded.addField('Game Version', body.server.name)
+
+							serverEmbded.setFooter('MCStatus by LamboCreeper')
+							serverEmbded.setThumbnail('https://mcapi.ca/query/' + args[1] + '/icon')
+							serverEmbded.setURL('http://lambocreeper.uk/mcstatus')
+
+							message.channel.sendEmbed(serverEmbded, '', { disableEveryone: true });
 					    }
 					});
 
@@ -59,6 +68,35 @@ client.on('message', message => {
 					message.channel.sendMessage(msg.server.not_defined);
 					message.channel.sendMessage(msg.server.usage);
 				}
+			} else if (arg0 == 'OFFICIAL') {
+				var url = "https://mcapi.ca/mcstatus"
+				request({
+					url: url,
+					json: true
+				}, function (error, response, body) {
+					if (!error && response.statusCode === 200) {
+						const officialEmbded = new Discord.RichEmbed()
+
+						.setColor('#66A866')
+						.setTitle('Official Minecraft Services Status')
+
+						.addField('Minecraft.net', body['minecraft.net'].status)
+						.addField('Minecraft Session', body['session.minecraft.net'].status)
+						.addField('Minecraft Skins', body['skins.minecraft.net'].status)
+						.addField('Minecraft Textures', body['textures.minecraft.net'.status])
+						.addField('Mojang.com', body['mojang.com'].status)
+						.addField('Mojang Authentication', body['auth.mojang.com'].status)
+						.addField('Mojang Session Servers', body['sessionserver.mojang.com'].status)
+						.addField('Mojang Acccounts', body['account.mojang.com'].status)
+						.addField('Mojang API', body['api.mojang.com'].status)
+
+						.setFooter('MCStatus by LamboCreeper')
+						.setThumbnail('http://vgboxart.com/resources/logo/3993_mojang-prev.png')
+						.setURL('http://lambocreeper.uk/mcstatus')
+
+						message.channel.sendEmbed(officialEmbded, '', { disableEveryone: true });
+					}
+				});
 			}
 		} else {
 			var docs = msg.documentation;

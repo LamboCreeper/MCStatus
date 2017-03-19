@@ -83,7 +83,7 @@ client.on('message', message => {
 						.addField('Minecraft.net', body['minecraft.net'].status)
 						.addField('Minecraft Session', body['session.minecraft.net'].status)
 						.addField('Minecraft Skins', body['skins.minecraft.net'].status)
-						.addField('Minecraft Textures', body['textures.minecraft.net'.status])
+						.addField('Minecraft Textures', body['textures.minecraft.net'].status)
 						.addField('Mojang.com', body['mojang.com'].status)
 						.addField('Mojang Authentication', body['auth.mojang.com'].status)
 						.addField('Mojang Session Servers', body['sessionserver.mojang.com'].status)

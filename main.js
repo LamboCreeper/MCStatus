@@ -7,6 +7,18 @@ const auth = require('./auth.json');
 
 var prefix = '[MCStatus] ';
 
+function convertMillisecondsToDigitalClock(ms) {
+    hours = Math.floor(ms / 3600000), // 1 Hour = 36000 Milliseconds
+    minutes = Math.floor((ms % 3600000) / 60000), // 1 Minutes = 60000 Milliseconds
+    seconds = Math.floor(((ms % 360000) % 60000) / 1000) // 1 Second = 1000 Milliseconds
+        return {
+        hours : hours,
+        minutes : minutes,
+        seconds : seconds,
+        clock : hours + ":" + minutes + ":" + seconds
+    };
+}
+
 client.on('ready', () => {
 	console.log(prefix + "Starting Up...");
 
@@ -121,6 +133,31 @@ client.on('message', message => {
 				});
 			} else if (arg0 == '-G') {
 				message.channel.sendMessage(client.guilds.size);
+			} else if (arg0 == '-P') {
+				message.channel.sendMessage(client.ping);
+			} else if (arg0 == '-U') {
+				message.channel.sendMessage(convertMillisecondsToDigitalClock(client.uptime).clock);
+			} else if (arg0 == 'HELP') {
+				var docs = msg.documentation;
+				var response = '';
+
+				const aboutEmbded = new Discord.RichEmbed()
+
+				.setTitle('MCStatus')
+				.setColor('#66A866')
+				.setDescription(msg.about.p1 + message.author + msg.about.p2)
+
+				for (cmd in docs) {
+				   aboutEmbded.addField(docs[cmd].name, "**Usage:** " + docs[cmd].command + "\n**Example:** " + docs[cmd].example + "\n**Description:** " + docs[cmd].description)
+			   	}
+
+				aboutEmbded.addField('Links', ' [GitHub](http://github.com/LamboCreeper/MCStatus) | [Invite](http://lcurl.xyz/MCStatusBot) | [Website](http://LamboCreeper.uk/)')
+
+				aboutEmbded.setThumbnail('https://hydra-media.cursecdn.com/minecraft.gamepedia.com/1/1e/Observer_PE.png?version=8156987803ff022df44a2a839f2fdc96')
+				aboutEmbded.setFooter('v1.0.0b | Guilds: ' + client.guilds.size + ' | Developer: LamboCreeper')
+				aboutEmbded.setURL('http://lcurl.xyz/MCStatusBot')
+
+				message.channel.sendEmbed(aboutEmbded, '', { disableEveryone: true });
 			}
 		} else {
 			var docs = msg.documentation;

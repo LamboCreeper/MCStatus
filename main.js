@@ -1,9 +1,21 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ fetchAllMembers: true });
 
 var request = require("request");
+
 const msg = require('./messages.json');
 const auth = require('./auth.json');
+
+var firebase = require("firebase");
+var app = firebase.initializeApp({
+	apiKey: auth.firebase.apiKey,
+	authDomain: auth.firebase.authDomain,
+	databaseURL: auth.firebase.databaseURL,
+	projectId: auth.firebase.projectId,
+	storageBucket: auth.firebase.storageBucket,
+	messagingSenderId: auth.firebase.messagingSenderId
+});
+var database = firebase.database();
 
 var prefix = '[MCStatus] ';
 
@@ -66,7 +78,7 @@ client.on('message', message => {
 
 								serverEmbded.setFooter('MCStatus by LamboCreeper')
 								serverEmbded.setThumbnail('https://mcapi.ca/query/' + args[1] + '/icon')
-								serverEmbded.setURL('http://lcurl.xyz/MCStatusBot')
+								serverEmbded.setURL('https://lambocreeper.uk/mcstatus')
 
 								message.channel.sendEmbed(serverEmbded, '', { disableEveryone: true });
 							} else {
@@ -85,7 +97,7 @@ client.on('message', message => {
 
 								serverEmbded.setFooter('MCStatus by LamboCreeper')
 								serverEmbded.setThumbnail('https://mcapi.ca/query/' + args[1] + '/icon')
-								serverEmbded.setURL('http://lcurl.xyz/MCStatusBot')
+								serverEmbded.setURL('https://lambocreeper.uk/mcstatus/')
 
 								message.channel.sendEmbed(serverEmbded, '', { disableEveryone: true });
 							}
@@ -104,9 +116,7 @@ client.on('message', message => {
 					url: url,
 					json: true
 				}, function (error, response, body) {
-					console.log(1);
 					if (!error && response.statusCode === 200) {
-						console.log(2);
 						const officialEmbded = new Discord.RichEmbed()
 
 						.setColor('#66A866')
@@ -124,7 +134,7 @@ client.on('message', message => {
 
 						.setFooter('MCStatus by LamboCreeper')
 						.setThumbnail('http://vgboxart.com/resources/logo/3993_mojang-prev.png')
-						.setURL('http://lcurl.xyz/MCStatusBot')
+						.setURL('https://lambocreeper.uk/mcstatus')
 
 						message.channel.sendEmbed(officialEmbded, '', { disableEveryone: true });
 					} else {
@@ -132,7 +142,7 @@ client.on('message', message => {
 					}
 				});
 			} else if (arg0 == '-G') {
-				message.channel.sendMessage(client.guilds.size);
+				message.channel.sendMessage(client.guilds.size + ' ' + client.users.size);
 			} else if (arg0 == '-P') {
 				message.channel.sendMessage(client.ping);
 			} else if (arg0 == '-U') {
@@ -151,11 +161,11 @@ client.on('message', message => {
 				   aboutEmbded.addField(docs[cmd].name, "**Usage:** " + docs[cmd].command + "\n**Example:** " + docs[cmd].example + "\n**Description:** " + docs[cmd].description)
 			   	}
 
-				aboutEmbded.addField('Links', ' [GitHub](http://github.com/LamboCreeper/MCStatus) | [Invite](http://lcurl.xyz/MCStatusBot) | [Website](http://LamboCreeper.uk/)')
+				aboutEmbded.addField('Links', ' [GitHub](http://github.com/LamboCreeper/MCStatus) | [Invite](http://lcurl.xyz/MCStatusBot) | [Website](https://lambocreeper.uk/mcstatus) | [Donate](https://lambocreeper.uk/donate)')
 
 				aboutEmbded.setThumbnail('https://hydra-media.cursecdn.com/minecraft.gamepedia.com/1/1e/Observer_PE.png?version=8156987803ff022df44a2a839f2fdc96')
-				aboutEmbded.setFooter('v1.0.0b | Guilds: ' + client.guilds.size + ' | Developer: LamboCreeper')
-				aboutEmbded.setURL('http://lcurl.xyz/MCStatusBot')
+				aboutEmbded.setFooter('Proudly developed by LamboCreeper and used by ' + client.users.size + ' users in ' + client.guilds.size + ' guilds.')
+				aboutEmbded.setURL('https://lambocreeper.uk/mcstatus')
 
 				message.channel.sendEmbed(aboutEmbded, '', { disableEveryone: true });
 			}
@@ -173,15 +183,33 @@ client.on('message', message => {
 			   aboutEmbded.addField(docs[cmd].name, "**Usage:** " + docs[cmd].command + "\n**Example:** " + docs[cmd].example + "\n**Description:** " + docs[cmd].description)
 		   	}
 
-			aboutEmbded.addField('Links', ' [GitHub](http://github.com/LamboCreeper/MCStatus) | [Invite](http://lcurl.xyz/MCStatusBot) | [Website](http://LamboCreeper.uk/)')
+			aboutEmbded.addField('Links', ' [GitHub](http://github.com/LamboCreeper/MCStatus) | [Invite](http://lcurl.xyz/MCStatusBot) | [Website](https://lambocreeper.uk/mcstatus) | [Donate](https://lambocreeper.uk/donate)')
 
 			aboutEmbded.setThumbnail('https://hydra-media.cursecdn.com/minecraft.gamepedia.com/1/1e/Observer_PE.png?version=8156987803ff022df44a2a839f2fdc96')
-			aboutEmbded.setFooter('v1.0.0b | Guilds: ' + client.guilds.size + ' | Developer: LamboCreeper')
-			aboutEmbded.setURL('http://lcurl.xyz/MCStatusBot')
+			aboutEmbded.setFooter('Proudly developed by LamboCreeper and used by ' + client.users.size + ' users in ' + client.guilds.size + ' guilds.')
+			aboutEmbded.setURL('https://lambocreeper.uk/mcstatus')
 
 			message.channel.sendEmbed(aboutEmbded, '', { disableEveryone: true });
 		}
 	}
+});
+
+client.on('guildMemberAdd', member => {
+	firebase.database().ref().child('users').set(client.users.size);
+});
+
+client.on('guildMemberRemove', member => {
+	firebase.database().ref().child('users').set(client.users.size);
+});
+
+client.on('guildCreate', guild => {
+	firebase.database().ref().child('guilds').set(client.guilds.size);
+	firebase.database().ref().child('users').set(client.users.size);
+});
+
+client.on('guildDelete', guild => {
+	firebase.database().ref().child('guilds').set(client.guilds.size);
+	firebase.database().ref().child('users').set(client.users.size);
 });
 
 client.login(auth.token);

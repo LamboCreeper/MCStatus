@@ -21,6 +21,12 @@
 			"command": "`@MCStatus offical`",
 			"example": "`@MCStatus offical`",
 			"description": "Get information about official Minecraft services ran by Mojang."
+		},
+		"compare": {
+			"name": "**Compare Servers**",
+			"command": "`@MCStatus compare <ip adress> <ip adress>`",
+			"example": "`@MCStatus compare mc.hypixel.net hivemc.eu`",
+			"description": "Compare two different Minecraft servers."
 		}
 	},
 	"server": {

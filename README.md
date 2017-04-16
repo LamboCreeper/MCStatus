@@ -1,5 +1,7 @@
-# MCStatus
-The Minecraft Status Discord Bot.  
+
+
+<h1 align="center">MCStatus</h1>
+<p align="center">The Minecraft Status Discord Bot.</p>
 
 ---
 

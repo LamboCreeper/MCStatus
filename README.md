@@ -1,25 +1,20 @@
-[![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com)
-
 # MCStatus
-The Minecraft Status Discord Bot. [Invite](https://discordapp.com/oauth2/authorize?client_id=291623138457026560&scope=bot)
+The Minecraft Status Discord Bot.  
+
+---
+[Website](https://lambocreeper.uk/mcstatus/) | [Invite](https://discordapp.com/oauth2/authorize?client_id=291623138457026560&scope=bot) | [Donate](https://lambocreeper.uk/donate/)
+
+---
 
 ## About
-MCStatus is a Discord Bot that allows you to check the status of your favourite Minecraft related services.
 
-## Commands
+MCStatus is a Discord Bot used by over 10,000 unique users that allows you to check the status of your favourite Minecraft related services.
 
-### About the Bot
+Without having to leave Discord, you can now easily check the status of the official Mojang servers to see if that's the reason you can't log onto your favourite server. As well as that, you can always see how many people are online on a server with more stats too.
 
-```
-@MCStatus
-```
+## Documentation
 
-### Checking Minecraft Servers
-```
-@MCStatus server <ip>
-```
+The documentation for MCStatus can be found [here](https://lambocreeper.uk/mcstatus/) on my website.
 
-### Checking Official Mojang Services
-```
-@MCStatus official
-```
+## Donators
+- WheezyGold7931 - £2

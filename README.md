@@ -4,7 +4,7 @@ The Minecraft Status Discord Bot.
 ---
 
 <p align="center">
-[Website](https://lambocreeper.uk/mcstatus/) | [Invite](https://discordapp.com/oauth2/authorize?client_id=291623138457026560&scope=bot) | [Donate](https://lambocreeper.uk/donate/)
+<a href="https://lambocreeper.uk/mcstatus/">Website</a> | <a href="https://discordapp.com/oauth2/authorize?client_id=291623138457026560&scope=bot">Invite</a> | <a href="https://lambocreeper.uk/donate/">Donate</a>
 </p>
 
 ---

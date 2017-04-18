@@ -19,7 +19,7 @@ Without having to leave Discord, you can now easily check the status of the offi
 
 ## Documentation
 
-The documentation for MCStatus can be found [here](https://lambocreeper.uk/mcstatus/) on my website.
+The documentation for MCStatus can be found [here](https://lambocreeper.uk/mcstatus/) on my website. You can also view all the documentation inside of Discord by typing `@MCStatus [help]`.
 
 ## Donators
 - WheezyGold7931 - £2

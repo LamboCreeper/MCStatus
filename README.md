@@ -1,25 +1,21 @@
-
-
-<h1 align="center">MCStatus</h1>
-<p align="center">The Minecraft Status Discord Bot.</p>
-
----
-
-<p align="center">
-<a href="https://lambocreeper.uk/mcstatus/">Website</a> | <a href="https://discordapp.com/oauth2/authorize?client_id=291623138457026560&scope=bot">Invite</a> | <a href="https://lambocreeper.uk/donate/">Donate</a>
-</p>
-
----
+# MCStatus
+The Minecraft Status Discord Bot. [Website](https://lambocreeper.uk/mcstatus/) | [Invite]("https://discordapp.com/oauth2/authorize?client_id=291623138457026560&scope=bot")
 
 ## About
 
-MCStatus is a Discord Bot used by over 40,000 unique users that allows you to check the status of your favourite Minecraft related services.
+MCStatus is a Discord Bot used by over 50,000 unique users that allows you to check the status of your favourite Minecraft related services.
 
 Without having to leave Discord, you can now easily check the status of the official Mojang servers to see if that's the reason you can't log onto your favourite server. As well as that, you can always see how many people are online on a server with more stats too.
 
-## Documentation
+## Commands
+A list of commands in the latest version of MCStatus.
 
-The documentation for MCStatus can be found [here](https://lambocreeper.uk/mcstatus/) on my website. You can also view all the documentation inside of Discord by typing `@MCStatus [help]`.
+Prefix | Command | Arguments | Description
+-----|----|----|----
+`@MCStatus`/`+mcs` | about | | Returns information about MCStatus.
+... | server | `<IP address>` | Returns information about a specific Minecraft server.
+... | official | | Returns information about official Mojang servers.
+... | compare | `<IP address #1>` `<IP address #2>` | Returns comparative information about two Minecraft servers.
+... | stats | | Returns statistics for MCStatus
 
-## Donators
-- WheezyGold7931 - £2
+<sub>**Please note:** if MCStatus has a nickname you have to use the `+mcs` command prefix.</sub>
